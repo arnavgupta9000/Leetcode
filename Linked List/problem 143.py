@@ -92,3 +92,31 @@ once fast at last node or greater than last node, if the list is even the next n
 if the list is odd, it is exactly at the half way point (ie the node it sits on is the half way point)
 '''
 
+def solve1(head):
+    curr = head
+    slow, fast = head, head
+
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+    
+    # we have the midpoint with slow.next
+    second = slow.next
+    slow.next = None # need this to effectively break the list into 2 (was the issue)
+
+    # now reverse the second half
+    prev = None
+    while second is not None:
+        temp = second.next
+        second.next = prev
+        prev = second
+        second = temp
+    
+    # now the list is reversed
+    first, second = head, prev
+    while second: # since second will be the smaller list always
+        # store curr.next and prev.next
+        temp1, temp2 = first.next, second.next
+        first.next = second
+        second.next = temp1 # assigning the second pointer INBETWEEN the 2 first elements
+        first, second = temp1, temp2

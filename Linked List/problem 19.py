@@ -7,13 +7,20 @@ def solve(head, n):
         dummy.next = head # make the next pointer of dummy equal to the head. this now makes dummy the new starting point of the list
 
 
-
+        
         left = dummy
         right = dummy
 
-        for _ in range(n+1): # this makes the gap of 'n' nodes between the first and second pointers. we need n+1 since both nodes start at dummy
+        for _ in range(n+1): # this makes the gap of 'n' nodes between the first and second pointers. we need n+1 since both nodes start at dummy (and head is techically the first element in the list so we need to account for that hence the n+1)
 
             right = right.next
+        '''
+        left= dummy
+        right = dummy.next
+        while n > 0 and right: # this creates a gap of n spaces as well 
+            right = right.next
+            n-=1
+        '''
         
         while right is not None:
             left = left.next
