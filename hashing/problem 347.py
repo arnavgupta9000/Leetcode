@@ -44,8 +44,24 @@ def solve2(nums, k):
             if len(res) == k:
                 return res
 
+import heapq
 
-print(solve2([1,1,1,2,2,3], 2))
+def solve3(nums,k): # using a heap way after the fact. not as good as bucket sort lol
+
+    count = {}
+    for i in nums:
+        count[i] = count.get(i,0) + 1
+    
+    heap = []
+
+    for num, freq in count.items():
+        heapq.heappush(heap, (freq, num))
+        if len(heap) > k:
+            heapq.heappop(heap)
+    
+    return [num for _, num in heap]
+
+print(solve3([1,1,1,2,2,3], 2))
 
 
 '''

@@ -13,13 +13,26 @@ def solve(strs):
             hash[ "".join(hash2) ].append(i)
         else:
             hash[ "".join(hash2) ] = [i]
-    print(hash)
+    # print(hash)
     res = []
     for value in hash.values():
         res.append(value)
         
     return res 
 
+# a more efficient solution for the first solve
+'''
+    for i in strs:
+        sorted_word = ''.join(sorted(i)) 
+        if sorted_word in hash:
+            hash[sorted_word].append(i)
+        else:
+            hash[sorted_word] = [i]
+
+When sorted('ant') is called:
+The string 'ant' is treated as an iterable of characters: ['a', 'n', 't'].
+These characters are then sorted. Since 'ant' is already sorted alphabetically, the output is ['a', 'n', 't'].
+'''
 
 def solve2(strs):
     hash = {}
@@ -52,7 +65,7 @@ def solve2(strs):
 
         
 
-print(solve2(["eat","tea","tan","ate","nat","bat"]))
+print(solve(["eat","tea","tan","ate","nat","bat"]))
 
 
 '''

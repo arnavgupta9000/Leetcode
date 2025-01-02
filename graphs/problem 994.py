@@ -43,7 +43,7 @@ def solve(grid):
         for j in range(cols):
             if grid[i][j] == 1:
                 return -1
-    return time - 1
+    return time - 1 if time != 0 else 0
 
 
 print(solve([[2,1,1],[1,1,0],[0,1,1]]))

@@ -26,9 +26,10 @@ def solve(nums):
                 l+=1
                 r-=1
                 while l < r and nums[l] == nums[l - 1]: #Skip duplicate values for the left pointer
-                        l += 1
+                    l += 1
                 while l < r and nums[r] == nums[r + 1]: #Skip duplicate values for the right pointer
-                        r -= 1
+                    r -= 1
+                # if we didnt have this it would fail for this test case [2, -1, -1, 1, 1,-1,1,2,2]. so we do need this since leetcode does test for this LOL
 
 
     return res

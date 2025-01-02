@@ -23,7 +23,7 @@ def solve(stones):
             x = abs(x) - abs(y)
             heapq.heappush(stones, -x)
             # heapq.heapify(stones) # dont need this its already maintanied as a heap
-    return -stones[0]
+    return -stones[0] if stones else 0
 
 print(solve([2,7,4,1,8,1]))
 

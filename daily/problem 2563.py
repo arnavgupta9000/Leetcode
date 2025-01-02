@@ -10,24 +10,36 @@ def solve(nums, lower, upper):
     count = 0
 
     for i in range(len(nums) - 1):
-        left = i + 1
-        right = len(nums) - 1
+        l = i + 1
+        r = len(nums) - 1
+        
+        # Find the smallest index where the sum >= lower
+        while l <= r:
+            mid = (l + r) // 2
+            if nums[i] + nums[mid] >= lower:
+                r = mid - 1
+            else:
+                l = mid + 1
+        left_bound = l
 
-        # Move left pointer to the first element that forms a sum >= lower
-        while left <= right and nums[i] + nums[left] < lower:
-            left += 1
+        # Reset pointers for the upper bound
+        l = i + 1
+        r = len(nums) - 1
+        
+        # Find the largest index where the sum <= upper
+        while l <= r:
+            mid = (l + r) // 2
+            if nums[i] + nums[mid] <= upper:
+                l = mid + 1
+            else:
+                r = mid - 1
+        right_bound = r
 
-        # Move right pointer to the last element that forms a sum <= upper
-        while left <= right and nums[i] + nums[right] > upper:
-            right -= 1
-
-        # If left <= right, all pairs from left to right with nums[i] are valid
-        if left <= right:
-            count += right - left + 1
+        # Add the number of valid pairs for this `i`
+        count += max(0, right_bound - left_bound + 1)
 
     return count
 
-    
 
     
 

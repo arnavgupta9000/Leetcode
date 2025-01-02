@@ -17,9 +17,21 @@ def solve(nums, k):
         k-=1
     return -res
 
-print(solve([3,2,1,5,6,4], 2))
+# print(solve([3,2,1,5,6,4], 2))
 
+# going back through this we would really want a min heap for max efficiecy
 
+def solve2(nums,k):
+
+    heap = []
+
+    for i in nums:
+        heapq.heappush(heap, i)
+        if len(heap) > k:
+            heapq.heappop(heap)
+    return heap[0] if heap else 0
+
+print(solve2([3,2,1,5,6,4], 2))
 
 '''
 again k-th largest points to heap. we have 1 <= k <= 10^5 so we def want a linear time not a nlogn even tho that might work. this all points to using a heap.
