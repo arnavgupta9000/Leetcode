@@ -44,4 +44,23 @@ If you don't already have a clear head node for the result (e.g., when merging),
 When we do temp = l1 or temp = l2, we're not modifying the structure of the linked list. Instead, we're just reassigning the temp pointer to point to the node that l1 or l2 points to. This breaks the connection between the previously constructed list and the new node.
 
 
+When merging two lists, the first node we add determines the head of the new list. If we don't use a dummy node, we would have to handle the head separately, like this:
+
+if l1.val < l2.val:
+    head = l1
+    l1 = l1.next
+else:
+    head = l2
+    l2 = l2.next
+
+temp = head  # Temp pointer to track current node
+while l1 and l2:
+    if l1.val < l2.val:
+        temp.next = l1
+        l1 = l1.next
+    else:
+        temp.next = l2
+        l2 = l2.next
+    temp = temp.next
+
 '''

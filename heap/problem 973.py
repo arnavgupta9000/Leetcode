@@ -21,6 +21,18 @@ def solve(points, k):
             while len(heap) > k:
                 heapq.heappop(heap)
     return [[x,y] for _, x, y in heap]
+    '''
+    heap = [] # store a tuple, the distance and the x,y coord
+
+    for i in points:
+        distance = math.sqrt((i[0]) ** 2 + i[1] ** 2) # the second coord is 0 but well anything minus 0 is just that thing
+        
+        heapq.heappush(heap, (-distance, i[0], i[1]))
+        while len(heap) > k:
+            heapq.heappop(heap)
+    return [[x,y] for _, x, y in heap]
+
+    '''
 
 print(solve([[1,3],[-2,2]], 1))
 

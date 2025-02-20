@@ -93,7 +93,6 @@ if the list is odd, it is exactly at the half way point (ie the node it sits on 
 '''
 
 def solve1(head):
-    curr = head
     slow, fast = head, head
 
     while fast and fast.next:
@@ -120,3 +119,19 @@ def solve1(head):
         first.next = second
         second.next = temp1 # assigning the second pointer INBETWEEN the 2 first elements
         first, second = temp1, temp2
+
+'''
+1->2->3->4
+
+first list = 1,2,3
+second list = 4
+then we get 1->4->2 but now the second list is empty so where is the 3?
+well actually its 1->4->2->3 because when we do "first = temp1" thats "2->3" thus its there
+
+1->2->3->4->5
+
+first = 1,2,3
+second = 4,5
+1->5->2 (its acc 1->5->2->3 due to how the linked lists are set up)
+1->5->2->4->3
+'''

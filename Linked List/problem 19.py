@@ -36,6 +36,26 @@ def solve(head, n):
 
         return dummy.next
 
+def solve2(l1, l2): # must more optimized
+    dummy = ListNode(0)
+    curr = dummy
+    carry = 0
+    while l1 or l2 or carry:
+        val1 = l1.val if l1 else 0
+        val2 = l2.val if l2 else 0
+
+        res = val1 + val2 + carry
+        carry = (res // 10)
+        value = (res % 10)
+        curr.next = ListNode(value)
+        curr = curr.next
+
+        if l1:
+            l1 = l1.next
+        if l2:
+            l2 = l2.next
+    return dummy.next
+     
 
 
     
