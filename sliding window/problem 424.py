@@ -45,4 +45,14 @@ so basically when using sliding window, u have 2 pointer l, r and u expand r unt
 there is a true O(n) sol (we use O(26n) in sol 1) but it is very hard to find so i wouldnt worry about it to much but
 
 basically for sol2 we say that once we have a max freq, we never lower it since were already over estimating the true cost.
+
+(r - l + 1) - max(count.values())
+
+This calculates how many characters in the window are NOT the most frequent character.
+These are the characters we would need to replace to make the entire window the same character.
+Checking against k
+
+If the number of characters to replace ((r - l + 1) - max(count.values())) is greater than k, the window is invalid.
+In that case, we need to shrink the window from the left (l += 1) to make it valid again.
+
 '''
