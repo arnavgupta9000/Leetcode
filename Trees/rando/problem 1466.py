@@ -36,6 +36,8 @@ class graph:
         dfs(0, -1) # start the dfs at node 0, it has no parents
         return self.res
 
+s = graph()
+print(s.solve(6, [[0,1],[1,3],[2,3],[4,0],[4,5]]))
 '''
 But since a tree has no cycles, and we prevent revisiting using parent, DFS never visits a node more than once.
 
