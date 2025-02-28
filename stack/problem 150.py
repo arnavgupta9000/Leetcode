@@ -19,17 +19,19 @@ def solve(tokens):
 
     for i in range(len(tokens)):
         if tokens[i] in valid: # pop and append the result
+        # if tokens[i] in "+-/*" also works
             num1 = stack.pop()
             num2 = stack.pop()
             if tokens[i] == '/':
                 # special case
-                if (num1 < 0 and num2 < 0) or (num1 > 0 and num2 > 0):
-                    stack.append(math.floor(num2 / num1))
-                else:
-                    num1 = abs(num1)
-                    num2 = abs(num2)
-                    num3 = (math.floor(num2 / num1))
-                    stack.append(-num3)
+                # if (num1 < 0 and num2 < 0) or (num1 > 0 and num2 > 0):
+                #     stack.append(math.floor(num2 / num1))
+                # else:
+                #     num1 = abs(num1)
+                #     num2 = abs(num2)
+                #     num3 = (math.floor(num2 / num1))
+                #     stack.append(-num3)
+                stack.append(int(num2/num1))
 
             elif tokens[i] == '+':
                 stack.append(num1 + num2)
@@ -54,4 +56,6 @@ also dont have to worry about edge cases where the tokens is not valid as again 
 got on my own!!
 
 however an improvment can be just for divison its just stack.append(int(num2/num1))
+
+since the int part just chucks the decimal its like int(-1.5) = -1.0 = -1
 '''
