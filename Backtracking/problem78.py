@@ -47,3 +47,22 @@ the first way is not the way i would have solved it but its the case where we ei
 
 the second way is the way i prefer which i have learned based of memory...
 '''
+
+
+'''
+                                        []
+                           /                   \
+                        [1]                       []
+                      /     \                /         \
+                  [1,2]      [1]            [2]          []
+                /    \       /   \           /  \        /   \
+            [1,2,3] [1,2]   [1,3]   [1]    [2,3] [2]    [3]   []
+
+Each node represents a subset at a specific point.
+Each level represents a decision:
+
+First level: Do we include 1?
+Second level: Do we include 2?
+Third level: Do we include 3?
+At the end, we reach all possible subsets.
+''' 

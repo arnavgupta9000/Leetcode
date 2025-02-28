@@ -25,3 +25,8 @@ def solve(nums):
     return res
 
 print(solve([1,2,2]))
+
+'''
+nums[i] == nums[i - 1]: Checks if the current number is the same as the previous number.
+i > start: Ensures that we are not skipping the first occurrence of a number in a recursive call.
+'''
