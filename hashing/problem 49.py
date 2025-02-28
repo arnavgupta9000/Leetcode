@@ -61,6 +61,16 @@ def solve2(strs):
     '''
     return list(hash.values()) # this is used instead of ^^, however both work
 
+def solve3(strs):
+    freq = {}
+    for i in strs:
+        word = "".join(sorted(i))
+        if word in freq:
+            freq[word].append(i)
+        else:
+            freq[word] = [i]
+    
+    return list(freq.values())
 
 
         

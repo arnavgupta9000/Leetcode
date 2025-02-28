@@ -28,7 +28,7 @@ class MedianFinder:
             val = -heapq.heappop(self.small) # pop from the max heap and add to min heap
             heapq.heappush(self.large, val)
 
-         # uneven size?
+         # uneven size? order of these 2 if statements dont matter!
         if len(self.small) > len(self.large) + 1:
             val = -heapq.heappop(self.small) # pop from the max heap and add to min heap
             heapq.heappush(self.large, val)

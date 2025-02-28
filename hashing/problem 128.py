@@ -14,7 +14,7 @@ def solve(nums):
             length = 1
             while i + length in num_set:
                 length+=1
-        res = max(res, length)
+            res = max(res, length)
     return res
 
 print(solve([100,4,200,1,3,2]))
