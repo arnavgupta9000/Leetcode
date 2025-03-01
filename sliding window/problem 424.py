@@ -10,7 +10,7 @@ def solve(s, k):
     for r in range(len(s)):
         count[s[r]] = count.get(s[r], 0) + 1
 
-        while (r-l+1) - max(count.values()) > k: # replacements
+        while (r-l+1) - max(count.values()) > k: # replacements, if its less than k the window is valid, so greater than k means invalid
             count[s[l]] -= 1
             l+=1
 

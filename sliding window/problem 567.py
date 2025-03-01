@@ -4,62 +4,56 @@
 
 
 def solve(s1, s2):
-    size = len(s1)
-
+    if len(s1) > len(s2):
+        return False
     hash1 = {}
     hash2 = {}
+
 
     for i in s1:
         hash1[i] = hash1.get(i,0) + 1
     
-    if len(s2) < len(s1): # if s1 < s2 it cannot be a permutation
-        return False
-    
     l = 0
-    j=0
-    r=0
-    while l < len(s2) and r < len(s2):
-        while j < size:
-            hash2[s2[l]] = hash2.get(s2[l], 0) + 1
-            j+=1
-            l+=1
+    r = 0
+    while r < len(s2):
+        while (r-l) < len(s1) and r < len(s2):
+            hash2[s2[r]] = hash2.get(s2[r],0) + 1
+            r+=1
+        
         if hash1 == hash2:
             return True
-        
-        hash2[s2[l-size]] -=1
-        if hash2[s2[l-size]] == 0:
-            del hash2[s2[l-size]]
-        j-=1
-        r+=1
-    
+        hash2[s2[l]] -= 1
+        if hash2[s2[l]] == 0:
+            del hash2[s2[l]]
+        l+=1
+
     return False
 
-'''
+def solve2(s1, s2):
     if len(s1) > len(s2):
         return False
 
-    hash1 = {}
-    hash2 = {}
-    for i in s1:
-        hash2[i] = hash2.get(i,0) + 1
-    
-    r = 0
+    # Frequency arrays instead of dictionaries
+    hash1 = [0] * 26
+    hash2 = [0] * 26
+
+    for c in s1:
+        hash1[ord(c) - ord('a')] += 1
+
     l = 0
-    n = len(s1)
-    while r < len(s2):
-        while (r-l) < n:
-            hash1[s2[r]] = hash1.get(s2[r], 0) + 1
-            r+=1
+    for r in range(len(s2)):
+        hash2[ord(s2[r]) - ord('a')] += 1
+        
+        # If window size exceeds s1's length, shrink it from the left
+        if r - l + 1 > len(s1):
+            hash2[ord(s2[l]) - ord('a')] -= 1
+            l += 1
+
+        # If frequency counts match, return True
         if hash1 == hash2:
             return True
-        hash1[s2[l]] -= 1
-        if  hash1[s2[l]] == 0:
-            del hash1[s2[l]]
-        l+=1
+    
     return False
-
-    much cleaner
-'''
 
 
 print(solve("ab", "eidbaooo"))

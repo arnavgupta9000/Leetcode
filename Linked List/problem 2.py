@@ -37,6 +37,30 @@ def solve(l1, l2):
     return head
         
 
+def solve2(l1, l2): # better and faster/cleaner and less memory 
+    if not l1 and l2:
+        return 0
+    dummy = ListNode(0)
+    curr = dummy
+    
+    carry = 0
+    while l1 or l2 or carry:
+        val1 = l1.val if l1 else 0
+        val2 = l2.val if l2 else 0
+        
+        total = val1 + val2 + carry
+        curr.next = ListNode(total % 10)
+        curr = curr.next
+        
+        carry = (total // 10)
+        
+        if l1:
+            l1 = l1.next
+        if l2:
+            l2 = l2.next
+        
+    return dummy.next
+
 
 '''
 Intution: loop through the first list, get all numbers put into a string. loop through second list get all numbers put in a string. then reverse both these strings, turn into an int, add them, then reverse them again, and return them. worked yay! (without ANY help)

@@ -24,7 +24,7 @@ def solve(nums):
         if slow == slow2:
             return slow
 
-
+print(solve([1,3,4,2,2]))
 
 '''
 basically even neetcode said it memorize this solution, watch the vid u want the intution on why it works
