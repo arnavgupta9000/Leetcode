@@ -16,7 +16,7 @@ def solve(candidates, target):
         
         for i in range(start, len(candidates)):
             curr.append(candidates[i])
-            dfs(curr_sum + candidates[i], 0)
+            dfs(curr_sum + candidates[i], i)
             curr.pop()
         return
     

@@ -9,7 +9,7 @@ def solve(s):
         
         return s[l+1:r] # we need l+1 since the string now points to invalid chars. so we need the strings 1 pos over (ie l+1, r-1), but with slicing the [first:second], first includes the first char so we exclude it, and second doesnt include the last char so no work has to be done
     
-    max_len = ''
+    max_len = ''    
     for i in range(len(s)):
         # for odd lengths
         string = expand(i,i)
