@@ -1,24 +1,16 @@
 #Given an array of strings strs, group the anagrams together. You can return the answer in any order.
 
+
 def solve(strs):
-    
-    hash = {}
- 
+    freq = {}
     for i in strs:
-        hash2 = []
-        for j in i:
-            hash2.append(j)
-        hash2.sort()
-        if "".join(hash2) in hash:
-            hash[ "".join(hash2) ].append(i)
+        word = "".join(sorted(i))
+        if word in freq:
+            freq[word].append(i)
         else:
-            hash[ "".join(hash2) ] = [i]
-    # print(hash)
-    res = []
-    for value in hash.values():
-        res.append(value)
-        
-    return res 
+            freq[word] = [i]
+    
+    return list(freq.values())
 
 # a more efficient solution for the first solve
 '''
@@ -60,17 +52,6 @@ def solve2(strs):
     return res
     '''
     return list(hash.values()) # this is used instead of ^^, however both work
-
-def solve3(strs):
-    freq = {}
-    for i in strs:
-        word = "".join(sorted(i))
-        if word in freq:
-            freq[word].append(i)
-        else:
-            freq[word] = [i]
-    
-    return list(freq.values())
 
 
         
