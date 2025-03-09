@@ -4,7 +4,7 @@ Given the head of a sorted linked list, delete all nodes that have duplicate num
 class ListNode():
     pass
 
-def solve(head):
+def solve(head): # check below
     if not head:
         return None
     dummy = ListNode(0)
@@ -25,6 +25,21 @@ def solve(head):
         
         fast = fast.next
             
+
+    return dummy.next
+
+def solve2(head):
+    dummy = ListNode(0, head)
+    prev = dummy
+
+    while head:
+        while head.next and head.val == head.next.val: # skips dups
+            head = head.next
+        if prev.next == head: # this is saying if we are at 2,3 and prev at 2 and 3 is head, since prev.next == head, its not a dup so keep it
+            prev = prev.next 
+        else: # this is saying that if we had that prev case but now like 2, 1, 1, 3 we see that head is at 3 prev at 1 thus prev.next != head, thus prev.next = head.next
+            prev.next = head.next
+        head = head.next
 
     return dummy.next
 
